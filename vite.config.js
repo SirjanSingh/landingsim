@@ -6,11 +6,24 @@ export default defineConfig({
         open: true
     },
     optimizeDeps: {
-        include: ['ammojs-typed']
+        include: ['ammojs-typed', 'three']
     },
     build: {
         commonjsOptions: {
-            include: [/ammojs-typed/]
+            include: [/ammojs-typed/, /three/]
+        },
+        rollupOptions: {
+            external: ['three'],
+            output: {
+                globals: {
+                    three: 'THREE'
+                }
+            }
+        }
+    },
+    resolve: {
+        alias: {
+            'three': 'three/build/three.module.js'
         }
     }
 }); 
