@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planet Landing Simulator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #hud {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #0ff;
+            font-family: monospace;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+            pointer-events: none;
+        }
+
+        .hud-item {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        #alerts {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff0;
+            font-size: 24px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        #landing-summary {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            display: none;
+        }
+
+        #controls-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    
+    <div id="hud">
+        <div class="hud-item">Altitude: <span id="altitude">0</span> m</div>
+        <div class="hud-item">Vertical Speed: <span id="vertical-speed">0</span> m/s</div>
+        <div class="hud-item">Horizontal Speed: <span id="horizontal-speed">0</span> m/s</div>
+        <div class="hud-item">Fuel: <span id="fuel">100</span>%</div>
+        <div class="hud-item">Pitch: <span id="pitch">0</span>°</div>
+        <div class="hud-item">Roll: <span id="roll">0</span>°</div>
+    </div>
+
+    <div id="alerts"></div>
+
+    <div id="landing-summary">
+        <h2>Landing Summary</h2>
+        <p>Landing Speed: <span id="summary-speed">0</span> m/s</p>
+        <p>Fuel Remaining: <span id="summary-fuel">0</span>%</p>
+        <p>Landing Angle: <span id="summary-angle">0</span>°</p>
+        <p>Rating: <span id="summary-rating">Perfect!</span></p>
+        <button onclick="location.reload()">Try Again</button>
+    </div>
+
+    <div id="controls-info">
+        <p>Controls:</p>
+        <p>WASD / Arrows - Rotate</p>
+        <p>Space - Thrust</p>
+        <p>C - Toggle Camera</p>
+        <p>M - Toggle Music</p>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html> 
